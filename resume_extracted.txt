@@ -1,0 +1,67 @@
+--- PAGE 1 ---
+2 0 2 2
+–
+2 0 2 1
+博 ⼠ 助 聽 器
+聽 ⼒ 師
+負 責 第 ⼀ 線 聽 ⼒ 檢 查 業 務 及 助 聽 器 選 配
+諮 詢 及 衛 教 聽 ⼒ 學 相 關 內 容
+2 0 2 3
+-
+2 0 2 2
+聯 創 數 位 ⼯ 作 室
+前 端 ⼯ 程 師
+在 團 隊 中 負 責 前 端 的 開 發
+與 設 計 師 合 作 ， 開 發 各 式 動 畫 應 ⽤ 於 網 站 中
+為 公 司 帶 入 新 技 術 ， 解 決 開 發 瓶 頸
+2 0 2 5
+-
+2 0 2 3
+⼤ 樹 醫 藥 股 份 有 限 公 司
+聽 ⼒ 師
+籌 備 聽 ⼒ 中 ⼼ 開 幕 事 宜
+聽 ⼒ 檢 查 與 助 聽 器 選 配
+擔 任 C R M 系 統 與 外 包 廠 商 之 窗 ⼝
+電 ⼦ 化 既 有 的 業 務 流 程
+⾄ 今
+-
+2 0 2 5
+⼤ 樹 醫 藥 股 份 有 限 公 司
+店 ⻑
+管 理 桃 園 、 新 ⽵ 共 三 家 聽 ⼒ 中 ⼼
+追 蹤 同 仁 銷 售 狀 況
+開 發 輔 助 銷 售 ⼯ 具 ( R E A C T . J S + s u p a b a s e 全 端 系 統 )
+規 劃 聽 ⼒ 中 ⼼ 部 ⾨ 教 育 平 台 系 統
+P r o f i l e
+0 9 7 5 8 5 5 8 5 3
+c h a r l e s y o u 1 2 3 4 5 6 7 @ g m a i l . c o m
+台 北 護 理 健 康 ⼤ 學
+語 ⾔ 治 療 與 聽 ⼒ 學 系
+2 0 1 7 ~ 2 0 2 1
+H T M L / C S S / J S
+R E A C T . J S
+c o d e x  c l i  /  a n t i g r a v i t y
+m c p  s e r v e r  /  s k i l l s
+聽 ⼒ 學 / 聽 覺 輔 具 選 配
+E d u c a t i o n
+E x p e r t i s e
+國 考 聽 ⼒ 師 合 格
+T O E I C  :  8 2 0 分  
+L i c e n s e s  &  C e r t i f i c a t i o n s
+游 閔 暘
+F r o n t e n d  E n g i n e e r   &  A u d i o l o g i s t
+現 居 桃 園 ， ⾃  2 0 2 2  年 起 ⾃ 學 前 端 開 發 ， 通 過 ⾃ 學 並 於 同 年 底 錄 取 前 端 ⼯ 程
+師 的 職 缺 ， 主 要 負 責 前 端 開 發 ， 專 ⻑ 於 ⼀ ⾴ 式 網 站 、 企 業 形 象 官 網 、 電 ⼦ 展
+板 與 客 戶 管 理 系 統 （ S P A ） 開 發 與 串 接 。 具 國 家 聽 ⼒ 師 執 照 ， 於 2 0 2 3 年 底
+轉 換 跑 道 回 本 科 業 界 ⼯ 作 ， 能 轉 譯 臨 床 需 求 為 有 效 介 ⾯ 。 持 續 探 索  A I  ⼯
+具 ， 積 極 提 升 開 發 效 率 與 跨 域 整 合 能 ⼒ ， ⽬ 前 擔 任 區 域 主 管 以 及 負 責 部 ⾨ 內
+的 數 位 轉 型 。
+W o r k  E x p e r i e n c e
+P o r t f o l i o
+森 鉅 建 設 官 網   :  
+h t t p s : / / s h e n - g i - c o n s t r u c t i o n - c o m p a n y - a z z 2 5 1 w n t - y o z 0 7 1 3 . v e r c e l . a p p /
+聽 ⼒ 分 析 與 選 配 回 顧 系 統  :
+h t t p s : / / h e a r i n g r e v i e w d e v . v e r c e l . a p p / d a s h b o a r d
+1 9 9 9 / 0 4 / 0 2
+房 地 產 線 上 展 版 ( 僅 ⽀ 援 平 板 、 電 腦 )   :
+h t t p s : / / c l a s s e y - h o m e - 2 9 n b . v e r c e l . a p p /
