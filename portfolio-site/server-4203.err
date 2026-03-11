@@ -1,0 +1,13 @@
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:32] "GET / HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:36] "GET / HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:36] "GET /assets/index-iBgMm6kB.css HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:36] "GET /assets/index-ihOnxCob.js HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:36] "GET /profile-photo.png HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:36] code 404, message File not found
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:36] "GET /favicon.ico HTTP/1.1" 404 -
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:40] "GET / HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:40] "GET /assets/index-ihOnxCob.js HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:40] "GET /assets/index-iBgMm6kB.css HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:40] "GET /profile-photo.png HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:40] code 404, message File not found
+::ffff:127.0.0.1 - - [11/Mar/2026 23:15:40] "GET /favicon.ico HTTP/1.1" 404 -

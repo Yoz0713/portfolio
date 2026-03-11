@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Charles You / Direction 01</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #ebe9e1;
+        --board: #f6f3ec;
+        --paper: #fffdfa;
+        --ink: #223049;
+        --muted: #667085;
+        --line: #d9d4c7;
+        --accent: #1f63ff;
+        --accent-soft: rgba(31, 99, 255, 0.12);
+        --shadow: 0 28px 80px rgba(29, 41, 57, 0.08);
+        --radius: 34px;
+        font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 1600px;
+        background:
+          radial-gradient(circle at top left, rgba(31, 99, 255, 0.08), transparent 22%),
+          linear-gradient(180deg, #f1eee7 0%, var(--bg) 100%);
+        color: var(--ink);
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .font-latin {
+        font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .board {
+        padding: 44px;
+      }
+
+      .board-shell {
+        border: 1px solid rgba(34, 48, 73, 0.08);
+        border-radius: 42px;
+        background: rgba(255, 255, 255, 0.32);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        padding: 32px;
+      }
+
+      .board-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+
+      .eyebrow {
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+      }
+
+      .board-title {
+        margin: 12px 0 0;
+        font-size: 42px;
+        line-height: 0.94;
+        letter-spacing: -0.06em;
+      }
+
+      .board-copy {
+        margin: 12px 0 0;
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .frame-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 420px;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .frame-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .frame-label {
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .frame-size {
+        color: var(--muted);
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .desktop-frame,
+      .mobile-frame {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .desktop-frame {
+        width: 100%;
+      }
+
+      .mobile-frame {
+        width: 100%;
+      }
+
+      .desktop-page {
+        padding: 34px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 34px;
+      }
+
+      .brand {
+        display: grid;
+        gap: 6px;
+      }
+
+      .brand-name {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .brand-sub {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .nav {
+        display: flex;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) 330px;
+        gap: 28px;
+      }
+
+      .hero-copy {
+        min-height: 420px;
+        border-radius: 30px;
+        padding: 34px;
+        background:
+          linear-gradient(180deg, rgba(31, 99, 255, 0.06), transparent 46%),
+          #f7f4ee;
+        border: 1px solid rgba(34, 48, 73, 0.08);
+      }
+
+      .hero-kicker {
+        margin-bottom: 18px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+      }
+
+      .hero-name {
+        margin: 0;
+        max-width: 6ch;
+        color: var(--ink);
+        font-size: 92px;
+        line-height: 0.9;
+        letter-spacing: -0.09em;
+      }
+
+      .hero-title {
+        margin: 22px 0 0;
+        max-width: 16ch;
+        font-size: 28px;
+        line-height: 1.15;
+        letter-spacing: -0.05em;
+      }
+
+      .hero-text {
+        margin: 18px 0 0;
+        max-width: 58ch;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .button-primary,
+      .button-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        border-radius: 999px;
+        padding: 0 22px;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .button-primary {
+        background: var(--ink);
+        color: white;
+        box-shadow: 0 18px 34px rgba(34, 48, 73, 0.18);
+      }
+
+      .button-secondary {
+        background: white;
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+
+      .hero-side {
+        display: grid;
+        gap: 18px;
+      }
+
+      .portrait {
+        border-radius: 30px;
+        overflow: hidden;
+        aspect-ratio: 0.88;
+      }
+
+      .portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .info-card {
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        background: white;
+        padding: 22px;
+      }
+
+      .info-title {
+        margin: 0 0 14px;
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .info-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .info-row {
+        display: grid;
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 12px;
+        align-items: baseline;
+      }
+
+      .info-term {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .info-value {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        gap: 24px;
+        margin-top: 26px;
+      }
+
+      .section-card {
+        border-top: 1px solid var(--line);
+        padding-top: 24px;
+      }
+
+      .section-title {
+        margin: 0 0 16px;
+        font-size: 29px;
+        line-height: 1.08;
+        letter-spacing: -0.05em;
+      }
+
+      .lead-text {
+        margin: 0;
+        max-width: 58ch;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 118px minmax(0, 1fr);
+        gap: 18px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: white;
+        padding: 20px;
+      }
+
+      .timeline-period {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .timeline-role {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: -0.04em;
+      }
+
+      .timeline-company {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .timeline-copy {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .bullet-list {
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+
+      .bullet-item {
+        position: relative;
+        padding-left: 16px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .bullet-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 11px;
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      .side-stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .skill-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: white;
+        padding: 10px 14px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 26px;
+      }
+
+      .project-card {
+        border-radius: 24px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8f5ee 100%);
+        border: 1px solid var(--line);
+        padding: 22px;
+        min-height: 220px;
+      }
+
+      .project-stack {
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .project-title {
+        margin: 14px 0 0;
+        font-size: 22px;
+        line-height: 1.12;
+        letter-spacing: -0.05em;
+      }
+
+      .project-copy {
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .mobile-page {
+        padding: 18px;
+        background: #f8f5ee;
+      }
+
+      .mobile-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+      }
+
+      .mobile-brand {
+        color: var(--accent);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .mobile-shell {
+        display: grid;
+        gap: 14px;
+      }
+
+      .mobile-hero {
+        border-radius: 24px;
+        background: white;
+        border: 1px solid var(--line);
+        padding: 18px;
+      }
+
+      .mobile-name {
+        margin: 10px 0 0;
+        max-width: 5ch;
+        font-size: 54px;
+        line-height: 0.92;
+        letter-spacing: -0.09em;
+      }
+
+      .mobile-title {
+        margin: 14px 0 0;
+        font-size: 18px;
+        line-height: 1.18;
+        letter-spacing: -0.04em;
+      }
+
+      .mobile-copy {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+      }
+
+      .mobile-portrait {
+        border-radius: 24px;
+        overflow: hidden;
+        aspect-ratio: 0.82;
+      }
+
+      .mobile-card {
+        border-radius: 22px;
+        background: white;
+        border: 1px solid var(--line);
+        padding: 18px;
+      }
+
+      .mobile-section-title {
+        margin: 10px 0 0;
+        font-size: 21px;
+        line-height: 1.14;
+        letter-spacing: -0.05em;
+      }
+
+      .mobile-mini {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.75;
+      }
+    </style>
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  </head>
+  <body>
+    <div class="board">
+      <div class="board-shell">
+        <div class="board-header">
+          <div>
+            <div class="eyebrow font-latin">Direction 01 / Editorial Contrast</div>
+            <h1 class="board-title">游閔暘履歷網站新方向</h1>
+            <p class="board-copy">
+              這版不沿用目前已實作網站的節奏，改走更強的 editorial layout。主軸是大標題、大片留白、低彩度紙張背景，
+              用更清楚的資訊層級去呈現跨域背景，並把照片作為主視覺核心。
+            </p>
+          </div>
+          <div class="eyebrow font-latin">Desktop + Mobile</div>
+        </div>
+
+        <div class="frame-grid">
+          <div>
+            <div class="frame-meta">
+              <div class="frame-label font-latin">Desktop Board</div>
+              <div class="frame-size font-latin">1440 x 1680</div>
+            </div>
+
+            <div class="desktop-frame">
+              <div class="desktop-page">
+                <div class="topbar">
+                  <div class="brand">
+                    <div class="brand-name font-latin">Personal Resume</div>
+                    <div class="brand-sub">游閔暘</div>
+                  </div>
+                  <div class="nav font-latin">
+                    <span>About</span>
+                    <span>Experience</span>
+                    <span>Projects</span>
+                    <span>Contact</span>
+                  </div>
+                </div>
+
+                <div class="hero">
+                  <div class="hero-copy">
+                    <div class="hero-kicker font-latin">Frontend Engineer & Audiologist</div>
+                    <h2 class="hero-name">游閔暘</h2>
+                    <div class="hero-title">
+                      讓臨床經驗、數位流程與前端介面在同一個產品語境裡協調運作。
+                    </div>
+                    <p class="hero-text">
+                      具備前端開發與臨床聽力雙重背景，擅長把使用者需求、商業目標與實際流程轉譯成清楚、
+                      可維護且能落地的介面。熟悉一頁式網站、企業官網、數位展板與 CRM 類型系統，也能在產品規劃與現場執行之間建立有效共識。
+                    </p>
+                    <div class="hero-actions">
+                      <div class="button-primary">Download Resume</div>
+                      <div class="button-secondary">Selected Work</div>
+                    </div>
+                  </div>
+
+                  <div class="hero-side">
+                    <div class="portrait">
+                      <img src="/profile-photo.png" alt="游閔暘個人照片" />
+                    </div>
+                    <div class="info-card">
+                      <h3 class="info-title font-latin">Profile</h3>
+                      <div class="info-list">
+                        <div class="info-row">
+                          <div class="info-term font-latin">Base</div>
+                          <div class="info-value">Taoyuan, Taiwan</div>
+                        </div>
+                        <div class="info-row">
+                          <div class="info-term font-latin">Phone</div>
+                          <div class="info-value">0975-855-853</div>
+                        </div>
+                        <div class="info-row">
+                          <div class="info-term font-latin">Email</div>
+                          <div class="info-value">charlesyou1234567@gmail.com</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="content-grid">
+                  <div>
+                    <section class="section-card">
+                      <div class="eyebrow font-latin">About</div>
+                      <h3 class="section-title">臨床理解力，是我做產品介面的核心差異。</h3>
+                      <p class="lead-text">
+                        自 2022 年起自學前端開發，歷經前端工程師與聽力產業實務角色，長期處理第一線服務、跨部門溝通與數位流程優化。
+                        這讓我不只是把畫面做出來，而是能把需求整理成真正在現場可用的產品結構。
+                      </p>
+                    </section>
+
+                    <section class="section-card">
+                      <div class="eyebrow font-latin">Experience</div>
+                      <div class="timeline">
+                        <article class="timeline-item">
+                          <div class="timeline-period font-latin">2025 - Present</div>
+                          <div>
+                            <h4 class="timeline-role">店長 / 區域管理</h4>
+                            <p class="timeline-company">大樹醫藥股份有限公司</p>
+                            <p class="timeline-copy">
+                              管理桃園、新竹共三家聽力中心營運，並主導部門內的數位轉型與教育平台規劃。
+                            </p>
+                            <ul class="bullet-list">
+                              <li class="bullet-item">開發輔助銷售工具，使用 React.js + Supabase 建立內部流程系統。</li>
+                              <li class="bullet-item">從第一線營運痛點出發，改善跨店資訊流與追蹤效率。</li>
+                            </ul>
+                          </div>
+                        </article>
+                        <article class="timeline-item">
+                          <div class="timeline-period font-latin">2023 - 2025</div>
+                          <div>
+                            <h4 class="timeline-role">聽力師</h4>
+                            <p class="timeline-company">大樹醫藥股份有限公司</p>
+                            <p class="timeline-copy">
+                              執行聽力檢查與助聽器選配，並擔任 CRM 系統與外包廠商之間的溝通窗口。
+                            </p>
+                          </div>
+                        </article>
+                        <article class="timeline-item">
+                          <div class="timeline-period font-latin">2022 - 2023</div>
+                          <div>
+                            <h4 class="timeline-role">前端工程師</h4>
+                            <p class="timeline-company">聯創數位工作室</p>
+                            <p class="timeline-copy">
+                              負責品牌網站與互動式視覺專案前端開發，製作企業官網、一頁式網站與數位展板。
+                            </p>
+                          </div>
+                        </article>
+                      </div>
+                    </section>
+
+                    <section class="section-card">
+                      <div class="eyebrow font-latin">Selected Work</div>
+                      <div class="project-grid">
+                        <article class="project-card">
+                          <div class="project-stack font-latin">React / Frontend</div>
+                          <h4 class="project-title">森鉅建設官網</h4>
+                          <p class="project-copy">企業形象官網，強化品牌信任感與閱讀節奏。</p>
+                        </article>
+                        <article class="project-card">
+                          <div class="project-stack font-latin">React / Dashboard</div>
+                          <h4 class="project-title">聽力分析與選配回顧系統</h4>
+                          <p class="project-copy">串連聽力分析、選配回顧與內部判讀流程的儀表板介面。</p>
+                        </article>
+                        <article class="project-card">
+                          <div class="project-stack font-latin">Frontend / Exhibition</div>
+                          <h4 class="project-title">Classey Home 線上展版</h4>
+                          <p class="project-copy">房地產數位展版，著重大尺寸瀏覽體驗與視覺敘事。</p>
+                        </article>
+                      </div>
+                    </section>
+                  </div>
+
+                  <div class="side-stack">
+                    <div class="info-card">
+                      <h3 class="info-title font-latin">Education</h3>
+                      <div class="lead-text" style="font-size: 14px">
+                        國立臺北護理健康大學<br />
+                        語言治療與聽力學系<br />
+                        2017 - 2021
+                      </div>
+                    </div>
+                    <div class="info-card">
+                      <h3 class="info-title font-latin">Capabilities</h3>
+                      <div class="skill-cloud">
+                        <span class="pill">React.js</span>
+                        <span class="pill">Tailwind CSS</span>
+                        <span class="pill">Supabase</span>
+                        <span class="pill">企業官網切版</span>
+                        <span class="pill">CRM 流程數位化</span>
+                        <span class="pill">聽力學與助聽器選配</span>
+                        <span class="pill">跨部門溝通</span>
+                        <span class="pill">AI 工具導入</span>
+                      </div>
+                    </div>
+                    <div class="info-card">
+                      <h3 class="info-title font-latin">Licenses</h3>
+                      <div class="lead-text" style="font-size: 14px">
+                        國考聽力師合格<br />
+                        TOEIC 820
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="frame-meta">
+              <div class="frame-label font-latin">Mobile Board</div>
+              <div class="frame-size font-latin">390 x 1500</div>
+            </div>
+
+            <div class="mobile-frame">
+              <div class="mobile-page">
+                <div class="mobile-topbar">
+                  <div>
+                    <div class="mobile-brand font-latin">Personal Resume</div>
+                    <div style="margin-top: 4px; font-size: 13px; font-weight: 700;">游閔暘</div>
+                  </div>
+                  <div class="eyebrow font-latin" style="font-size: 9px;">D01</div>
+                </div>
+
+                <div class="mobile-shell">
+                  <section class="mobile-hero">
+                    <div class="eyebrow font-latin" style="font-size: 10px;">Frontend Engineer & Audiologist</div>
+                    <h2 class="mobile-name">游閔暘</h2>
+                    <div class="mobile-title">能在臨床需求與數位產品之間，建立清楚的翻譯層。</div>
+                    <p class="mobile-copy">
+                      具備前端開發與臨床聽力雙重背景，擅長把需求、流程與介面整合成有效的產品體驗。
+                    </p>
+                  </section>
+
+                  <div class="mobile-portrait">
+                    <img src="/profile-photo.png" alt="游閔暘個人照片" />
+                  </div>
+
+                  <section class="mobile-card">
+                    <div class="eyebrow font-latin" style="font-size: 10px;">Profile</div>
+                    <div class="mobile-mini" style="margin-top: 10px;">
+                      Taoyuan, Taiwan<br />
+                      0975-855-853<br />
+                      charlesyou1234567@gmail.com
+                    </div>
+                  </section>
+
+                  <section class="mobile-card">
+                    <div class="eyebrow font-latin" style="font-size: 10px;">Experience</div>
+                    <h3 class="mobile-section-title">店長 / 區域管理</h3>
+                    <div class="mobile-mini" style="margin-top: 8px;">
+                      大樹醫藥股份有限公司 / 2025 - Present
+                    </div>
+                    <p class="mobile-copy" style="margin-top: 10px;">
+                      主導部門內的數位轉型與營運優化，建立輔助銷售工具與教育平台流程。
+                    </p>
+                  </section>
+
+                  <section class="mobile-card">
+                    <div class="eyebrow font-latin" style="font-size: 10px;">Capabilities</div>
+                    <div class="skill-cloud" style="margin-top: 12px;">
+                      <span class="pill">React.js</span>
+                      <span class="pill">Tailwind CSS</span>
+                      <span class="pill">CRM</span>
+                      <span class="pill">跨部門溝通</span>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>

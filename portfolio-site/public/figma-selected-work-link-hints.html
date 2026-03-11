@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selected Work Link Hints</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f2efe8;
+        --paper: #fffdfa;
+        --line: #d7d2c6;
+        --ink: #223049;
+        --muted: #697586;
+        --accent: #1f63ff;
+        --radius: 28px;
+        font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 1280px;
+        background:
+          radial-gradient(circle at top left, rgba(31, 99, 255, 0.08), transparent 24%),
+          linear-gradient(180deg, #f6f3ed 0%, var(--bg) 100%);
+        color: var(--ink);
+      }
+
+      .font-latin {
+        font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .board {
+        padding: 48px;
+      }
+
+      .shell {
+        border-radius: 40px;
+        border: 1px solid rgba(34, 48, 73, 0.08);
+        background: rgba(255, 255, 255, 0.45);
+        padding: 32px;
+      }
+
+      .eyebrow {
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+      }
+
+      .title {
+        margin: 12px 0 0;
+        font-size: 40px;
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+      }
+
+      .copy {
+        margin: 14px 0 0;
+        max-width: 720px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.85;
+      }
+
+      .section {
+        margin-top: 30px;
+        border-radius: 34px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        padding: 32px;
+        box-shadow: 0 22px 60px rgba(34, 48, 73, 0.06);
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+
+      .section-title {
+        margin: 10px 0 0;
+        font-size: 30px;
+        line-height: 1.05;
+        letter-spacing: -0.05em;
+      }
+
+      .frame-note {
+        color: var(--muted);
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, #ffffff 0%, #f8f5ee 100%);
+        padding: 22px;
+      }
+
+      .stack {
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .project-title {
+        margin: 14px 0 0;
+        font-size: 22px;
+        line-height: 1.12;
+        letter-spacing: -0.05em;
+      }
+
+      .desc {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 46px;
+        width: 100%;
+        border-radius: 999px;
+        padding: 0 18px 0 20px;
+        background: var(--ink);
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        box-shadow: 0 18px 30px rgba(34, 48, 73, 0.16);
+      }
+    </style>
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  </head>
+  <body>
+    <div class="board">
+      <div class="shell">
+        <div class="eyebrow font-latin">Selected Work / Click Hint Patch</div>
+        <h1 class="title">局部補強：讓作品卡片看起來明確可點</h1>
+        <p class="copy">
+          這一頁只處理 `Selected Work` 的交互暗示，不改你原本的主版面。方向改成每張卡片只留一個主 CTA，
+          不放額外 chips 或次要按鈕，讓作品區塊更安靜，也更符合目前整體留白節奏。
+        </p>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow font-latin">Selected Work</div>
+              <h2 class="section-title">作品卡片加上連結提示</h2>
+            </div>
+            <div class="frame-note font-latin">Desktop Variant / isolated patch</div>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div>
+                <div class="stack font-latin">React / Frontend</div>
+                <h3 class="project-title">森鉅建設官網</h3>
+                <p class="desc">企業形象官網，強化品牌信任感與閱讀節奏。</p>
+              </div>
+              <div style="padding-top: 24px;">
+                <div class="cta font-latin">
+                  <span>Open project</span>
+                  <span>↗</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div>
+                <div class="stack font-latin">React / Dashboard</div>
+                <h3 class="project-title">聽力分析與選配回顧系統</h3>
+                <p class="desc">串連聽力分析、選配回顧與內部判讀流程的儀表板介面。</p>
+              </div>
+              <div style="padding-top: 24px;">
+                <div class="cta font-latin">
+                  <span>Open project</span>
+                  <span>↗</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div>
+                <div class="stack font-latin">Frontend / Exhibition</div>
+                <h3 class="project-title">Classey Home 線上展版</h3>
+                <p class="desc">房地產數位展版，著重大尺寸瀏覽體驗與視覺敘事。</p>
+              </div>
+              <div style="padding-top: 24px;">
+                <div class="cta font-latin">
+                  <span>Open project</span>
+                  <span>↗</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
