@@ -1,20 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap');
 @import "tailwindcss";
 
 :root {
   color-scheme: light;
-  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
-  --font-latin: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
-  --color-bg: #ebe9e1;
-  --color-paper: #fffdfa;
-  --color-line: #d9d4c7;
-  --color-ink: #223049;
-  --color-strong: #223049;
-  --color-muted: #667085;
-  --color-soft: #98a2b3;
-  --color-accent: #1f63ff;
-  --color-slate-button: #667085;
-  --shadow-soft: 0 28px 80px rgba(29, 41, 57, 0.08);
+  font-family: "Inter", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-latin: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Inter", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --color-page: #f8f6f6;
+  --color-card: #ffffff;
+  --color-border: #e5e7eb;
+  --color-primary-desktop: #0077b5;
+  --color-primary-mobile: #0a66c2;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -27,15 +24,14 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  color: var(--color-ink);
-  background:
-    radial-gradient(circle at top left, rgba(31, 99, 255, 0.08), transparent 24%),
-    linear-gradient(180deg, #f1eee7 0%, var(--color-bg) 100%);
+  color: #0f172a;
+  background: var(--color-page);
 }
 
 a {
@@ -75,8 +71,37 @@ select {
   font-family: var(--font-display);
 }
 
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
 ::selection {
-  background: rgba(31, 99, 255, 0.16);
+  background: rgba(10, 102, 194, 0.18);
+}
+
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-top: 4.5rem;
+  }
+
+  :root {
+    --color-page: #f3f2ef;
+  }
+
+  body {
+    background: var(--color-page);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

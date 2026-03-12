@@ -1,399 +1,589 @@
-type Experience = {
-  period: string
-  role: string
-  company: string
-  summary: string
-  bullets?: string[]
+type SkillGroup = {
+  title: string
+  tone: 'primary' | 'neutral'
+  items: string[]
 }
 
-type Project = {
+type LanguageItem = {
+  label: string
+  level: string
+  percent: number
+}
+
+type ProjectItem = {
   name: string
   url: string
-  description: string
-  stack: string
+}
+
+type ExperienceItem = {
+  role: string
+  period: string
+  company: string
+  bullets: string[]
+  current?: boolean
 }
 
 const profile = {
   name: '游閔暘',
-  title: 'Frontend Engineer',
-  domain: 'Audiologist',
-  heroTitle: '讓臨床經驗、數位流程與前端介面',
-  heroTitleSub: '在同一個產品語境裡協調運作。',
-  mobileHeroTitle: '能在臨床需求與數位產品之間，',
-  mobileHeroTitleSub: '建立清楚的翻譯層。',
-  intro:
-    '具備前端開發與臨床聽力雙重背景，擅長把使用者需求、商業目標與實際流程轉譯成清楚、可維護且能落地的介面。熟悉一頁式網站、企業官網、數位展板與 CRM 類型系統，也能在產品規劃與現場執行之間建立有效共識。',
-  mobileIntro:
-    '具備前端開發與臨床聽力雙重背景，擅長把需求、流程與介面整合成有效的產品體驗。',
-  about:
-    '現居桃園，自 2022 年起經由自學轉職，透過學生時期的耳科檢查助理與第一線門市、診所服務背景，逐步建立前端開發與臨床現場之間的轉譯能力。專長涵蓋一頁式網站、企業形象官網、數位展板與 CRM 類型系統，也在聽力產業長期處理流程優化與跨部門協作。',
+  englishName: 'Min-Yang Yu',
+  title: 'Frontend Engineer | Audiologist',
   location: 'Taoyuan, Taiwan',
-  phone: '0975-855-853',
+  locationMobile: '桃園市, 台灣 (Taoyuan, Taiwan)',
   email: 'charlesyou1234567@gmail.com',
-  education: ['國立臺北護理健康大學', '語言治療與聽力學系', '2017 - 2021'],
-  certifications: ['國考聽力師合格', 'TOEIC 820'],
-  capabilities: [
-    'React.js',
-    'Tailwind CSS',
-    'Supabase',
-    '企業官網切版',
-    'CRM 流程數位化',
-    '聽力學與助聽器選配',
-    '跨部門溝通',
-    'AI 工具導入',
-  ],
+  intro:
+    '現居桃園，自 2022 年起自學前端開發，通過自學並於同年底錄取前端工程師的職缺，主要負責前端開發，專長於一頁式網站、企業形象官網、電子展板與客戶管理系統 (SPA) 開發與串接。具國家聽力師執照，於2023年底轉換跑道回歸本科專業工作，能轉譯臨床需求為有效介面。持續探索 AI 工具，積極提升開發效率與跨領域整合能力，目前擔任區域主管以及負責部門內的數位轉型。',
+  education: {
+    degree: '語言治療與聽力學系',
+    school: '台北護理健康大學',
+    period: '2017 ~ 2021',
+    description: '主要修習課程：聽力學、語言障礙評估與治療、聽覺輔具選配。',
+  },
 }
 
-const experiences: Experience[] = [
-  {
-    period: '2025 - Present',
-    role: '店長 / 區域管理',
-    company: '大樹醫藥股份有限公司',
-    summary: '管理桃園、新竹共三家聽力中心營運，並主導部門內的數位轉型與教育平台規劃。',
-    bullets: [
-      '開發輔助銷售工具，使用 React.js + Supabase 建立內部流程系統。',
-      '從第一線營運痛點出發，改善跨店資訊流與追蹤效率。',
-    ],
-  },
-  {
-    period: '2023 - 2025',
-    role: '聽力師',
-    company: '大樹醫藥股份有限公司',
-    summary:
-      '執行聽力檢查與助聽器選配，並擔任 CRM 系統與外包廠商之間的溝通窗口。',
-  },
-  {
-    period: '2022 - 2023',
-    role: '前端工程師',
-    company: '聯創數位工作室',
-    summary:
-      '負責品牌網站與互動式視覺專案前端開發，製作企業官網、一頁式網站與數位展板。',
-  },
-]
-
-const projects: Project[] = [
-  {
-    name: '森鉅建設官網',
-    url: 'https://shen-gi-construction-company-azz251wnt-yoz0713.vercel.app/',
-    description: '企業形象官網，強化品牌信任感與閱讀節奏。',
-    stack: 'React / Frontend',
-  },
-  {
-    name: '聽力分析與選配回顧系統',
-    url: 'https://hearingreviewdev.vercel.app/dashboard',
-    description: '串連聽力分析、選配回顧與內部判讀流程的儀表板介面。',
-    stack: 'React / Dashboard',
-  },
-  {
-    name: 'Classey Home 線上展版',
-    url: 'https://classey-home-29nb.vercel.app/',
-    description: '房地產數位展版，著重大尺寸瀏覽體驗與視覺敘事。',
-    stack: 'Frontend / Exhibition',
-  },
-]
-
 const navItems = [
-  { href: '#about', label: 'About' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#profile', label: '簡介' },
+  { href: '#expertise', label: '專業技能' },
+  { href: '#experience', label: '工作經歷' },
+  { href: '#portfolio', label: '作品集' },
+  { href: '#education', label: '學歷' },
+]
+
+const skillGroups: SkillGroup[] = [
+  {
+    title: '前端開發',
+    tone: 'primary',
+    items: ['HTML/CSS/JS', 'REACT.JS', 'Tailwind CSS', 'Next.js', 'codex cli / antigravity', 'mcp server / skills'],
+  },
+  {
+    title: '專業領域',
+    tone: 'neutral',
+    items: ['聽力學', '聽覺輔具選配', 'Web Accessibility (a11y)', '跨領域整合'],
+  },
+]
+
+const languages: LanguageItem[] = [
+  { label: '中文', level: '母語', percent: 100 },
+  { label: '英文 (TOEIC: 820分)', level: '中等', percent: 85 },
+]
+
+const projects: ProjectItem[] = [
+  { name: '聽力分析與選配回顧系統', url: 'https://hearingreviewdev.vercel.app/dashboard' },
+  { name: '森鉅建設官網', url: 'https://shen-gi-construction-company-azz251wnt-yoz0713.vercel.app/' },
+  { name: '房地產線上展版', url: 'https://classey-home-29nb.vercel.app/' },
+]
+
+const desktopExperiences: ExperienceItem[] = [
+  {
+    role: '店長',
+    period: '2023 - 至今',
+    company: '大樹醫藥股份有限公司',
+    bullets: [
+      '管理桃園、新竹共三家聽力中心',
+      '追蹤同仁銷售狀況',
+      '開發輔助銷售工具(REACT.JS+supabase全端系統)',
+      '規劃聽力中心部門教育平台系統',
+    ],
+    current: true,
+  },
+  {
+    role: '聽力師',
+    period: '2023 - 2025',
+    company: '大樹醫藥股份有限公司',
+    bullets: ['籌備聽力中心開幕事宜', '聽力檢查與助聽器選配', '擔任CRM系統與外包廠商之窗口', '電子化既有的業務流程'],
+  },
+  {
+    role: '前端工程師',
+    period: '2022 - 2023',
+    company: '聯創數位工作室',
+    bullets: ['在團隊中負責前端的開發', '與設計師合作，開發各式動畫應用於網站中', '為公司帶入新技術，解決開發瓶頸'],
+  },
+  {
+    role: '聽力師',
+    period: '2021 - 2022',
+    company: '博士助聽器',
+    bullets: ['負責第一線聽力檢查業務及助聽器選配', '諮詢及衛教聽力學相關內容'],
+  },
+]
+
+const mobileExperiences: ExperienceItem[] = [
+  {
+    role: '店長',
+    period: '2023 - 至今',
+    company: '大樹醫藥股份有限公司',
+    bullets: ['管理桃園、新竹共三家聽力中心', '追蹤同仁銷售狀況', '開發輔助銷售工具', '規劃部門教育平台系統'],
+    current: true,
+  },
+  {
+    role: '聽力師',
+    period: '2023 - 2025',
+    company: '大樹醫藥股份有限公司',
+    bullets: ['籌備聽力中心開幕事宜', '聽力檢查與助聽器選配', '擔任與外包廠商之窗口', '電子化既有的業務流程'],
+  },
+  {
+    role: '前端工程師',
+    period: '2022 - 2023',
+    company: '聯創數位工作室',
+    bullets: ['在團隊中負責前端的開發', '開發各式動畫應用於網站中', '解決開發瓶頸'],
+  },
+  {
+    role: '聽力師',
+    period: '2021 - 2022',
+    company: '博士助聽器',
+    bullets: ['負責第一線聽力檢查及選配', '諮詢及衛教聽力學相關內容'],
+  },
 ]
 
 function App() {
   return (
-    <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
-      <main className="mx-auto max-w-[1528px] px-5 py-4 sm:px-8 sm:py-7 lg:px-11 lg:py-4">
-        <div className="rounded-[34px] border border-[rgba(34,48,73,0.08)] bg-[rgba(255,253,250,0.88)] p-4 shadow-[var(--shadow-soft)] backdrop-blur-[10px] sm:p-6 lg:rounded-[36px] lg:p-[28px]">
-          <article className="rounded-[30px] border border-[rgba(34,48,73,0.08)] bg-[var(--color-paper)] px-4 py-5 sm:px-6 sm:py-6 lg:px-[34px] lg:py-[34px]">
-            <header className="flex items-end justify-between gap-6 pb-5 lg:pb-[34px]">
-            <div className="grid gap-[6px]">
-              <p className="font-latin text-[11px] font-semibold uppercase tracking-[0.3em] text-[var(--color-accent)]">
-                Personal Resume
-              </p>
-              <p className="text-sm font-semibold tracking-[-0.02em] text-[var(--color-strong)]">
-                {profile.name}
-              </p>
+    <div className="bg-[var(--color-page)] text-slate-900 font-display">
+      <DesktopLayout />
+      <MobileLayout />
+    </div>
+  )
+}
+
+function DesktopLayout() {
+  return (
+    <div className="hidden min-h-screen flex-col lg:flex">
+      <header className="sticky top-0 z-50 w-full border-b border-[var(--color-border)] bg-white">
+        <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6">
+          <div className="flex items-center gap-3">
+            <div className="text-[var(--color-primary-desktop)]">
+              <span className="material-symbols-outlined text-3xl font-bold">terminal</span>
             </div>
-
-            <nav aria-label="Primary" className="hidden items-center gap-[22px] md:flex">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  className="font-latin text-[13px] leading-[15px] text-[var(--color-muted)] transition hover:text-[var(--color-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-4"
-                  href={item.href}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-
-            <p className="font-latin text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)] md:hidden">
-              D01
-            </p>
-          </header>
-
-            <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_330px] lg:gap-7">
-              <div className="rounded-[30px] border border-[rgba(34,48,73,0.08)] bg-[linear-gradient(180deg,rgba(31,99,255,0.06)_0%,rgba(0,0,0,0)_46%),#f7f4ee] px-5 py-5 sm:px-7 sm:py-7 lg:min-h-[420px] lg:px-[34px] lg:py-[34px]">
-              <p className="font-latin text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--color-accent)] sm:text-[12px] sm:leading-[15px]">
-                {profile.title} / {profile.domain}
-              </p>
-              <h1 className="mt-4 max-w-[6ch] text-[56px] font-medium leading-[0.88] tracking-[-0.09em] text-[var(--color-strong)] sm:text-[92px] sm:leading-[0.9]">
-                {profile.name}
-              </h1>
-              <p className="mt-5 max-w-[13ch] text-[1.2rem] font-medium leading-[1.18] tracking-[-0.05em] text-[var(--color-strong)] sm:hidden">
-                {profile.mobileHeroTitle}
-                <br />
-                {profile.mobileHeroTitleSub}
-              </p>
-              <p className="mt-[22px] hidden max-w-[16ch] text-[28px] leading-[1.15] tracking-[-0.05em] text-[var(--color-strong)] sm:block">
-                {profile.heroTitle}
-                <br />
-                {profile.heroTitleSub}
-              </p>
-              <p className="mt-5 max-w-[34ch] text-[0.82rem] leading-7 text-[var(--color-muted)] sm:hidden">
-                {profile.mobileIntro}
-              </p>
-              <p className="mt-[18px] hidden max-w-[58ch] text-[15px] leading-[1.9] text-[var(--color-muted)] sm:block">
-                {profile.intro}
-              </p>
-
-              <div className="mt-8 hidden flex-wrap gap-[14px] sm:flex lg:mt-[28px]">
-                <a
-                  className="inline-flex min-h-[46px] w-full items-center justify-center rounded-full bg-[var(--color-strong)] px-[22px] font-latin text-[14px] font-bold text-white shadow-[0_18px_34px_rgba(34,48,73,0.18)] transition hover:bg-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-4 sm:w-auto lg:min-w-[172px]"
-                  href="/port.pdf"
-                  download
-                  style={{ color: '#ffffff' }}
-                >
-                  Download Resume
-                </a>
-                <a
-                  className="hidden min-h-[46px] items-center justify-center rounded-full border border-[var(--color-line)] bg-white px-[22px] font-latin text-[14px] font-bold text-[var(--color-strong)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-4 sm:inline-flex lg:min-w-[145px]"
-                  href="#projects"
-                >
-                  Selected Work
-                </a>
-              </div>
-            </div>
-
-            <aside className="grid content-start gap-[18px]">
-              <div className="overflow-hidden rounded-[30px] bg-white">
-                <img
-                  alt="游閔暘個人照片"
-                  className="aspect-[0.88] h-full w-full object-cover"
-                  height="1200"
-                  loading="eager"
-                  src="/profile-photo.png"
-                  width="960"
-                />
-              </div>
-
-              <InfoCard id="contact" title="Profile" bodyClassName="grid gap-3">
-                <Detail term="Base" value={profile.location} />
-                <Detail term="Phone" value={profile.phone} />
-                <Detail term="Email" value={profile.email} />
-              </InfoCard>
-            </aside>
+            <h1 className="text-xl font-bold tracking-tight text-slate-900">
+              {profile.name} <span className="text-[var(--color-primary-desktop)]">{profile.englishName}</span>
+            </h1>
           </div>
 
-          <div className="mt-5 grid gap-5 lg:mt-[26px] lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-6">
-            <div className="space-y-6 lg:space-y-0">
-              <section id="about" className="hidden border-t border-[var(--color-line)] pt-4 sm:block lg:pt-6">
-                <SectionLabel>About</SectionLabel>
-                <h2 className="mt-[10px] max-w-[640px] text-[29px] font-semibold leading-[1.05] tracking-[-0.055em] text-[var(--color-strong)]">
-                  臨床理解力，是我做產品介面的核心差異。
-                </h2>
-                <p className="mt-[14px] max-w-[58ch] text-[15px] leading-[1.9] text-[var(--color-muted)]">
-                  {profile.about}
-                </p>
-              </section>
-
-              <section
-                id="experience"
-                className="hidden border-t border-[var(--color-line)] pt-4 sm:block lg:mt-[24px] lg:pt-6"
+          <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                className="text-sm font-medium text-slate-900 transition-colors hover:text-[var(--color-primary-desktop)]"
+                href={item.href}
               >
-                <SectionLabel>Experience</SectionLabel>
-                <div className="mt-4 grid gap-4 lg:mt-6">
-                  {experiences.map((item) => (
-                    <article
-                      key={`${item.period}-${item.role}`}
-                      className={`${item.period !== '2025 - Present' ? 'hidden sm:block' : 'block'} rounded-[24px] border border-[var(--color-line)] bg-white px-5 py-5`}
-                    >
-                      <div className="grid gap-4 sm:grid-cols-[118px_minmax(0,1fr)] sm:gap-[18px]">
-                        <p className="font-latin text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
-                          {item.period}
-                        </p>
-                        <div>
-                          <h3 className="text-[20px] font-semibold tracking-[-0.04em] text-[var(--color-strong)]">
-                            {item.role}
-                          </h3>
-                          <p className="mt-[6px] text-[14px] leading-[17px] text-[var(--color-muted)]">
-                            {item.company}
-                          </p>
-                          <p className="mt-3 text-[14px] leading-[1.8] text-[var(--color-muted)]">
-                            {item.summary}
-                          </p>
-                          {item.bullets && (
-                            <ul className="mt-[14px] grid gap-2 text-[14px] leading-[1.7] text-[var(--color-muted)]">
-                              {item.bullets.map((bullet) => (
-                                <li key={bullet} className="flex gap-3">
-                                  <span className="mt-[9px] h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-                                  <span>{bullet}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      </div>
-                    </article>
-                  ))}
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+      <main className="mx-auto flex w-full max-w-7xl flex-grow px-6 py-8">
+        <div className="flex w-full flex-col gap-8 lg:flex-row">
+          <aside className="lg:w-1/3 xl:w-1/4">
+            <div className="sticky top-8 flex flex-col gap-6">
+              <section className="rounded-xl border border-[var(--color-border)] bg-white p-6 text-center shadow-sm lg:text-left">
+                <div className="relative mb-6 h-32 w-32 mx-auto lg:mx-0">
+                  <img
+                    alt="Professional headshot of a frontend engineer smiling"
+                    className="h-full w-full rounded-full border-4 border-[rgba(0,119,181,0.1)] object-cover"
+                    height="512"
+                    loading="eager"
+                    src="/profile-photo.png"
+                    width="512"
+                  />
+                  <div className="absolute bottom-1 right-1 h-6 w-6 rounded-full border-4 border-white bg-green-500" />
                 </div>
+                <h2 className="mb-1 text-2xl font-black text-slate-900">{profile.name}</h2>
+                <p className="mb-4 text-sm font-semibold text-[var(--color-primary-desktop)]">{profile.title}</p>
+                <div className="flex flex-col gap-3 text-sm text-slate-600">
+                  <DesktopContact icon="mail">{profile.email}</DesktopContact>
+                  <DesktopContact icon="location_on">{profile.location}</DesktopContact>
+                </div>
+                <hr className="my-6 border-[var(--color-border)]" />
               </section>
 
-              <section
-                id="projects"
-                className="hidden border-t border-[var(--color-line)] pt-4 sm:block lg:mt-[24px] lg:pt-6"
-              >
-                <SectionLabel>Selected Work</SectionLabel>
-                <div className="mt-4 grid gap-4 xl:grid-cols-3 lg:mt-[26px]">
-                  {projects.map((project) => (
-                    <article
-                      key={project.name}
-                      className="flex min-h-[220px] flex-col justify-between rounded-[24px] border border-[var(--color-line)] bg-[linear-gradient(180deg,#ffffff_0%,#f8f5ee_100%)] p-[22px]"
-                    >
-                      <div>
-                        <p className="font-latin text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--color-accent)]">
-                          {project.stack}
-                        </p>
-                        <h3 className="mt-[14px] text-[22px] font-semibold leading-[1.12] tracking-[-0.05em] text-[var(--color-strong)]">
-                          {project.name}
-                        </h3>
-                        <p className="mt-3 max-w-[238px] text-[14px] leading-[1.8] text-[var(--color-muted)]">
-                          {project.description}
-                        </p>
-                      </div>
-
-                      <a
-                        className="mt-6 inline-flex min-h-[46px] w-full items-center justify-between rounded-full bg-[var(--color-slate-button)] px-5 font-latin text-[14px] font-bold text-white shadow-[0_18px_30px_rgba(34,48,73,0.16)] transition hover:bg-[var(--color-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-4"
-                        href={project.url}
-                        rel="noreferrer"
-                        target="_blank"
-                        style={{ color: '#ffffff' }}
-                      >
-                        <span>Open project</span>
-                        <span aria-hidden="true">↗</span>
-                      </a>
-                    </article>
-                  ))}
-                </div>
-              </section>
+              <SidebarLanguageCard />
+              <SidebarProjectsCard />
             </div>
+          </aside>
 
-            <aside className="hidden content-start gap-4 sm:grid">
-              <InfoCard title="Education">
-                <StackedText lines={profile.education} />
-              </InfoCard>
+          <div className="flex flex-col gap-8 lg:w-2/3 xl:w-3/4">
+            <DesktopSection id="profile" icon="person" title="個人簡介">
+              <p className="text-lg leading-relaxed text-slate-600">{profile.intro}</p>
+            </DesktopSection>
 
-              <InfoCard title="Capabilities">
-                <div className="flex flex-wrap gap-[10px]">
-                  {profile.capabilities.map((capability) => (
+            <DesktopSection id="education" icon="school" title="學歷背景">
+              <div className="flex flex-col items-start gap-6 md:flex-row">
+                <div className="rounded-xl bg-[rgba(0,119,181,0.1)] p-4">
+                  <span className="material-symbols-outlined text-4xl text-[var(--color-primary-desktop)]">
+                    history_edu
+                  </span>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-slate-900">{profile.education.degree}</h4>
+                  <p className="font-medium text-slate-500">
+                    {profile.education.school} | {profile.education.period}
+                  </p>
+                  <p className="mt-2 text-base text-slate-600">{profile.education.description}</p>
+                </div>
+              </div>
+            </DesktopSection>
+
+            <DesktopSection id="expertise" icon="auto_awesome" title="專業技能">
+              <div className="grid gap-8 md:grid-cols-2">
+                {skillGroups.map((group) => (
+                  <div key={group.title}>
+                    <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">
+                      {group.title}
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {group.items.map((item) => (
+                        <span
+                          key={item}
+                          className={`rounded-lg border px-3 py-1.5 text-sm font-semibold ${group.tone === 'primary'
+                              ? 'border-[rgba(0,119,181,0.2)] bg-[rgba(0,119,181,0.1)] text-[var(--color-primary-desktop)]'
+                              : 'bg-slate-100 text-slate-700'
+                            }`}
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </DesktopSection>
+
+            <DesktopSection id="experience" icon="work" title="工作經歷">
+              <div className="space-y-10">
+                {desktopExperiences.map((item) => (
+                  <DesktopTimelineItem key={`${item.role}-${item.period}`} item={item} />
+                ))}
+              </div>
+            </DesktopSection>
+          </div>
+        </div>
+      </main>
+
+      <footer className="border-t border-[var(--color-border)] bg-white py-12">
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          <p className="text-sm text-slate-500">© 2026 游閔暘 Min-Yang Yu. 保留所有權利。</p>
+          <p className="mt-2 text-xs uppercase tracking-tighter text-slate-400">前端工程師 &amp; 聽力師</p>
+        </div>
+      </footer>
+    </div>
+  )
+}
+
+function MobileLayout() {
+  return (
+    <div className="min-h-screen lg:hidden">
+      <header className="sticky top-0 z-50 flex items-center justify-between border-b border-slate-200 bg-white px-4 py-3">
+        <div className="flex items-center gap-2">
+          <div className="rounded bg-[var(--color-primary-mobile)] p-1 text-white">
+            <span className="material-symbols-outlined text-xl">person</span>
+          </div>
+          <h1 className="text-lg font-bold tracking-tight text-slate-900">{profile.englishName}</h1>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-md pb-20">
+        <section className="mb-2 bg-white shadow-sm">
+          <div className="h-24 bg-gradient-to-r from-[var(--color-primary-mobile)] to-blue-400" />
+          <div className="-mt-12 px-4 pb-6">
+            <div className="relative inline-block">
+              <img
+                alt="游閔暘 Min-Yang Yu"
+                className="h-32 w-32 rounded-full border-4 border-white object-cover shadow-md"
+                height="512"
+                loading="eager"
+                src="/profile-photo.png"
+                width="512"
+              />
+            </div>
+            <div className="mt-4">
+              <h2 className="text-2xl font-bold text-slate-900">
+                {profile.name} {profile.englishName}
+              </h2>
+              <p className="mt-1 font-medium text-slate-600">
+                前端工程師 | 聽力師 (Frontend Engineer | Audiologist)
+              </p>
+              <div className="mt-4 space-y-2 text-sm text-slate-500">
+                <MobileContact icon="location_on">{profile.locationMobile}</MobileContact>
+                <MobileContact icon="mail">
+                  <a className="text-[var(--color-primary-mobile)] hover:underline" href={`mailto:${profile.email}`}>
+                    {profile.email}
+                  </a>
+                </MobileContact>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <MobileSection title="個人簡介">
+          <p className="text-sm leading-relaxed text-slate-700">{profile.intro}</p>
+        </MobileSection>
+
+        <MobileSection title="學歷背景">
+          <div className="flex gap-3">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded bg-[rgba(10,102,194,0.1)]">
+              <span className="material-symbols-outlined text-[var(--color-primary-mobile)]">history_edu</span>
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-slate-900">{profile.education.degree}</h4>
+              <p className="text-xs text-slate-600">
+                {profile.education.school} | {profile.education.period}
+              </p>
+              <p className="mt-1 text-xs text-slate-500">{profile.education.description}</p>
+            </div>
+          </div>
+        </MobileSection>
+
+        <MobileSection title="專業技能">
+          <div className="flex flex-wrap gap-2">
+            {skillGroups.map((group) => (
+              <div key={group.title} className={group.title === '前端開發' ? 'mb-4' : ''}>
+                <h4 className="mb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                  {group.title}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((item) => (
                     <span
-                      key={capability}
-                      className="rounded-full border border-[var(--color-line)] bg-white px-[14px] py-[10px] text-[13px] leading-4 text-[var(--color-muted)]"
+                      key={item}
+                      className={`rounded px-2.5 py-1 text-[10px] font-semibold ${group.tone === 'primary'
+                          ? 'bg-[rgba(10,102,194,0.1)] text-[var(--color-primary-mobile)]'
+                          : 'bg-slate-100 text-slate-600'
+                        }`}
                     >
-                      {capability}
+                      {item}
                     </span>
                   ))}
                 </div>
-              </InfoCard>
-
-              <InfoCard title="Licenses">
-                <StackedText lines={profile.certifications} />
-              </InfoCard>
-            </aside>
-          </div>
-
-          <div className="mt-5 grid gap-4 sm:hidden">
-            <InfoCard title="Experience">
-              <h3 className="text-[1.15rem] font-semibold tracking-[-0.04em] text-[var(--color-strong)]">
-                {experiences[0].role}
-              </h3>
-              <p className="mt-1 text-[0.82rem] text-[var(--color-muted)]">
-                {experiences[0].company} / {experiences[0].period}
-              </p>
-              <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">{experiences[0].summary}</p>
-            </InfoCard>
-
-            <InfoCard title="Capabilities">
-              <div className="flex flex-wrap gap-2">
-                {profile.capabilities.slice(0, 4).map((capability) => (
-                  <span
-                    key={capability}
-                    className="rounded-full border border-[var(--color-line)] bg-white px-3 py-2 text-[0.74rem] text-[var(--color-muted)]"
-                  >
-                    {capability}
-                  </span>
-                ))}
               </div>
-            </InfoCard>
+            ))}
           </div>
-          </article>
-        </div>
+        </MobileSection>
+
+        <MobileSection title="語言能力" icon="verified">
+          <div className="space-y-4">
+            {languages.map((item) => (
+              <div key={item.label}>
+                <div className="mb-1 flex justify-between text-[10px] font-bold text-slate-900">
+                  <span>{item.label}</span>
+                  <span>{item.level}</span>
+                </div>
+                <div className="h-1 overflow-hidden rounded-full bg-slate-100">
+                  <div
+                    className="h-full bg-[var(--color-primary-mobile)]"
+                    style={{ width: `${item.percent}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </MobileSection>
+
+        <MobileSection id="portfolio" title="精選作品">
+          <div className="space-y-4">
+            {projects.map((project) => (
+              <a
+                key={project.name}
+                className="block rounded-lg border border-slate-100 bg-slate-50 p-3"
+                href={project.url}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <h4 className="text-sm font-bold text-slate-900">{project.name}</h4>
+                <div className="mt-1 flex items-center gap-1 text-[10px] text-slate-500">
+                  <span className="material-symbols-outlined text-sm">open_in_new</span>
+                  <span>點擊查看</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </MobileSection>
+
+        <MobileSection title="工作經歷">
+          <div className="relative ml-3 border-l-2 border-slate-200 pb-2">
+            {mobileExperiences.map((item) => (
+              <MobileTimelineItem key={`${item.role}-${item.period}`} item={item} />
+            ))}
+          </div>
+        </MobileSection>
+
+        <footer className="p-6 text-center">
+          <div className="mx-auto max-w-7xl px-6 text-center">
+            <p className="text-xs text-slate-500">© 2026 游閔暘 Min-Yang Yu. 保留所有權利。</p>
+            <p className="mt-1 text-[10px] uppercase tracking-tighter text-slate-400">前端工程師 &amp; 聽力師</p>
+          </div>
+        </footer>
       </main>
     </div>
   )
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="font-latin text-[11px] font-semibold uppercase tracking-[0.32em] text-[var(--color-accent)]">
-      {children}
-    </p>
-  )
-}
-
-function InfoCard({
-  bodyClassName,
+function DesktopSection({
   children,
+  icon,
   id,
   title,
 }: {
-  bodyClassName?: string
   children: React.ReactNode
+  icon: string
   id?: string
   title: string
 }) {
   return (
-    <section
-      id={id}
-      className="rounded-[26px] border border-[var(--color-line)] bg-white px-5 py-5 lg:px-[22px] lg:py-[22px]"
-    >
-      <p className="font-latin text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
-        {title}
-      </p>
-      <div className={bodyClassName ? `mt-[14px] ${bodyClassName}` : 'mt-[14px]'}>{children}</div>
+    <section id={id} className="rounded-xl border border-[var(--color-border)] bg-white p-8 shadow-sm">
+      <div className="mb-6 flex items-center gap-3">
+        <span className="material-symbols-outlined text-3xl text-[var(--color-primary-desktop)]">{icon}</span>
+        <h3 className="text-2xl font-bold text-slate-900">{title}</h3>
+      </div>
+      {children}
     </section>
   )
 }
 
-function Detail({ term, value }: { term: string; value: string }) {
+function SidebarLanguageCard() {
   return (
-    <dl className="grid grid-cols-[72px_minmax(0,1fr)] gap-3">
-      <dt className="font-latin text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
-        {term}
-      </dt>
-      <dd className="min-w-0 break-words text-[14px] leading-[1.7] text-[var(--color-strong)]">
-        {value}
-      </dd>
-    </dl>
+    <section className="rounded-xl border border-[var(--color-border)] bg-white p-6 shadow-sm">
+      <h3 className="mb-4 flex items-center gap-2 font-bold text-slate-900">
+        <span className="material-symbols-outlined text-[var(--color-primary-desktop)]">verified</span>
+        語言能力
+      </h3>
+      <div className="space-y-3">
+        {languages.map((item) => (
+          <div key={item.label}>
+            <div className="mb-1 flex justify-between text-xs font-bold text-slate-900">
+              <span>{item.label}</span>
+              <span>{item.level}</span>
+            </div>
+            <div className="h-1.5 overflow-hidden rounded-full bg-slate-100">
+              <div
+                className="h-full bg-[var(--color-primary-desktop)]"
+                style={{ width: `${item.percent}%` }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   )
 }
 
-function StackedText({ lines }: { lines: string[] }) {
+function SidebarProjectsCard() {
   return (
-    <div className="grid gap-1 text-[14px] leading-[1.9] text-[var(--color-muted)]">
-      {lines.map((line) => (
-        <p key={line}>{line}</p>
-      ))}
+    <section id="portfolio" className="rounded-xl border border-[var(--color-border)] bg-white p-6 shadow-sm">
+      <h3 className="mb-4 flex items-center gap-2 font-bold text-slate-900">
+        <span className="material-symbols-outlined text-[var(--color-primary-desktop)]">folder_shared</span>
+        精選作品
+      </h3>
+      <div className="space-y-4">
+        {projects.map((project) => (
+          <a
+            key={project.name}
+            className="group block rounded-lg border border-transparent bg-slate-50 p-4 transition-all hover:border-[rgba(0,119,181,0.3)]"
+            href={project.url}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <h4 className="mb-1 text-sm font-bold text-slate-900 transition-colors group-hover:text-[var(--color-primary-desktop)]">
+              {project.name}
+            </h4>
+            <div className="flex items-center gap-1 text-xs text-slate-500">
+              <span className="material-symbols-outlined text-sm">open_in_new</span>
+              <span>點擊查看</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function DesktopTimelineItem({ item }: { item: ExperienceItem }) {
+  return (
+    <div className="relative border-l-2 border-slate-100 pl-8">
+      <div
+        className={`absolute -left-[9px] top-0 h-4 w-4 rounded-full ${item.current ? 'bg-[var(--color-primary-desktop)] ring-4 ring-[rgba(0,119,181,0.2)]' : 'bg-slate-300'
+          }`}
+      />
+      <div className="mb-2 flex flex-col md:flex-row md:items-start md:justify-between">
+        <h4 className="text-xl font-bold text-slate-900">{item.role}</h4>
+        <span className="text-sm font-medium text-slate-500">{item.period}</span>
+      </div>
+      <p className="mb-3 font-medium text-[var(--color-primary-desktop)]">{item.company}</p>
+      <ul className="list-disc list-inside space-y-2 text-slate-600">
+        {item.bullets.map((bullet) => (
+          <li key={bullet}>{bullet}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function MobileSection({
+  children,
+  icon,
+  id,
+  title,
+}: {
+  children: React.ReactNode
+  icon?: string
+  id?: string
+  title: string
+}) {
+  return (
+    <section id={id} className="mb-2 bg-white p-4 shadow-sm">
+      <h3 className={icon ? 'mb-4 flex items-center gap-2 text-lg font-bold text-slate-900' : 'mb-3 flex items-center gap-2 text-lg font-bold text-slate-900'}>
+        {icon ? <span className="material-symbols-outlined text-xl text-[var(--color-primary-mobile)]">{icon}</span> : null}
+        {title}
+      </h3>
+      {children}
+    </section>
+  )
+}
+
+function MobileTimelineItem({ item }: { item: ExperienceItem }) {
+  return (
+    <div className={`${item.period === '2021 - 2022' ? 'mb-4' : 'mb-8'} relative ml-6`}>
+      <div
+        className={`absolute -left-[33px] top-0 h-4 w-4 rounded-full ${item.current ? 'bg-[var(--color-primary-mobile)] ring-4 ring-[rgba(10,102,194,0.1)]' : 'bg-slate-300'
+          }`}
+      />
+      <div className="mb-1 flex items-start justify-between">
+        <h4 className="text-sm font-bold text-slate-900">{item.role}</h4>
+        <span className="text-[10px] text-slate-500">{item.period}</span>
+      </div>
+      <p className="mb-2 text-[11px] font-bold text-[var(--color-primary-mobile)]">{item.company}</p>
+      <ul className="list-disc list-inside space-y-1 text-xs text-slate-600">
+        {item.bullets.map((bullet) => (
+          <li key={bullet}>{bullet}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function DesktopContact({
+  children,
+  icon,
+}: {
+  children: React.ReactNode
+  icon: string
+}) {
+  return (
+    <div className="flex items-center justify-center gap-3 lg:justify-start">
+      <span className="material-symbols-outlined text-xl text-[var(--color-primary-desktop)]">{icon}</span>
+      <span>{children}</span>
+    </div>
+  )
+}
+
+function MobileContact({
+  children,
+  icon,
+}: {
+  children: React.ReactNode
+  icon: string
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className="material-symbols-outlined text-base">{icon}</span>
+      <span>{children}</span>
     </div>
   )
 }
