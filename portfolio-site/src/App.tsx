@@ -181,7 +181,7 @@ function DesktopLayout() {
                     className="h-full w-full rounded-full border-4 border-[rgba(0,119,181,0.1)] object-cover"
                     height="512"
                     loading="eager"
-                    src="/profile-photo.png"
+                    src={`${import.meta.env.BASE_URL}profile-photo.png`}
                     width="512"
                   />
                   <div className="absolute bottom-1 right-1 h-6 w-6 rounded-full border-4 border-white bg-green-500" />
@@ -290,7 +290,7 @@ function MobileLayout() {
                 className="h-32 w-32 rounded-full border-4 border-white object-cover shadow-md"
                 height="512"
                 loading="eager"
-                src="/profile-photo.png"
+                src={`${import.meta.env.BASE_URL}profile-photo.png`}
                 width="512"
               />
             </div>
