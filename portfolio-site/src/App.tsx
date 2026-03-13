@@ -52,12 +52,12 @@ const skillGroups: SkillGroup[] = [
   {
     title: '前端開發',
     tone: 'primary',
-    items: ['HTML/CSS/JS', 'REACT.JS', 'Tailwind CSS', 'Next.js', 'codex cli / antigravity', 'mcp server / skills'],
+    items: ['HTML/CSS/JS', 'REACT.JS', 'Next.js', 'codex cli / antigravity', 'mcp server / skills'],
   },
   {
     title: '專業領域',
     tone: 'neutral',
-    items: ['聽力學', '聽覺輔具選配', 'Web Accessibility (a11y)', '跨領域整合'],
+    items: ['聽力學', '聽覺輔具選配', '跨領域整合'],
   },
 ]
 
@@ -186,9 +186,9 @@ function DesktopLayout() {
                   />
                   <div className="absolute bottom-1 right-1 h-6 w-6 rounded-full border-4 border-white bg-green-500" />
                 </div>
-                <h2 className="mb-1 text-2xl font-black text-slate-900">{profile.name}</h2>
+                <h2 className="mb-1 text-2xl font-black text-slate-900 ">{profile.name}</h2>
                 <p className="mb-4 text-sm font-semibold text-[var(--color-primary-desktop)]">{profile.title}</p>
-                <div className="flex flex-col gap-3 text-sm text-slate-600">
+                <div className="flex flex-col gap-1 text-sm text-slate-600">
                   <DesktopContact icon="mail">{profile.email}</DesktopContact>
                   <DesktopContact icon="location_on">{profile.location}</DesktopContact>
                 </div>
@@ -234,8 +234,8 @@ function DesktopLayout() {
                         <span
                           key={item}
                           className={`rounded-lg border px-3 py-1.5 text-sm font-semibold ${group.tone === 'primary'
-                              ? 'border-[rgba(0,119,181,0.2)] bg-[rgba(0,119,181,0.1)] text-[var(--color-primary-desktop)]'
-                              : 'bg-slate-100 text-slate-700'
+                            ? 'border-[rgba(0,119,181,0.2)] bg-[rgba(0,119,181,0.1)] text-[var(--color-primary-desktop)]'
+                            : 'bg-slate-100 text-slate-700'
                             }`}
                         >
                           {item}
@@ -344,8 +344,8 @@ function MobileLayout() {
                     <span
                       key={item}
                       className={`rounded px-2.5 py-1 text-[10px] font-semibold ${group.tone === 'primary'
-                          ? 'bg-[rgba(10,102,194,0.1)] text-[var(--color-primary-mobile)]'
-                          : 'bg-slate-100 text-slate-600'
+                        ? 'bg-[rgba(10,102,194,0.1)] text-[var(--color-primary-mobile)]'
+                        : 'bg-slate-100 text-slate-600'
                         }`}
                     >
                       {item}
